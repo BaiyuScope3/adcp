@@ -1,5 +1,28 @@
 # Changelog
 
+## 3.1.0-rc.15
+
+### Minor Changes
+
+- 85411b1: Add optional `status_as_of` freshness timestamp to `get_media_buys` media-buy objects.
+
+  The field lets sellers identify when a returned media-buy-level `status` was last refreshed from the source of truth, covering cached or rolled-up list reads from curator/storefront aggregators. Sellers omit it or return `null` when status is live or freshness is unknown.
+
+- 2938456: feat(registry): add catalog collections and YouTube channel aliases
+
+  Adds first-class registry catalog collections, collection change-feed events, YouTube channel distribution identifier types, collection sync/distribution lookup APIs, and an admin community collection upsert path. This supports publisher-owned collections distributed through third-party platforms such as YouTube while keeping publisher authorization anchored on the publisher's own domain.
+
+### Patch Changes
+
+- c27e27f: Bump `@adcp/sdk` to `9.0.0-beta.29` so hosted and local storyboard runs pick
+  up phase-level `requires_capability` enforcement. Protocol-specific phases in
+  universal storyboards now skip as `not_applicable` before dispatch when the
+  agent does not advertise the gated capability.
+
+  The training agent now also advertises and accepts the SDK runner's `3.1-rc.14`
+  wire pin so local storyboard matrices do not reject current prerelease probes
+  with `VERSION_UNSUPPORTED`.
+
 ## 3.0.16
 
 ### Patch Changes
